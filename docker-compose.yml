@@ -1,6 +1,12 @@
 version: "3.8"
 
 services:
+  app:
+    image: twinkal1710/my-node-app
+    ports:
+    - 5050:5050
+    container_name: my-node-container
+
   mongo:
     image: mongo
     ports:
@@ -8,6 +14,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: twinkal
+    volumes:
+      - E:\mongo\data\db:/data/db
 
   mongo-express:
     image: mongo-express
