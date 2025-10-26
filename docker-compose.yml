@@ -14,8 +14,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: twinkal
-    volumes:
-      - E:\mongo\data\db:/data/db
+    # volumes:
+    #   - E:\mongo\data\db:/data/db
 
   mongo-express:
     image: mongo-express
