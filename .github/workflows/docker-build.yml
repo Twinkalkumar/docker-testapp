@@ -27,7 +27,7 @@ jobs:
           docker Compose down || true
 
           # Build and start containers
-          docker Compose -f docker-compose.yml up --build -d
+          docker compose -f docker-compose.yml up --build -d
 
       # Show running containers
       - name: List running containers
