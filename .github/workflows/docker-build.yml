@@ -36,4 +36,4 @@ jobs:
       # Tail logs
 
       - name: Show logs
-        run: docker compose logs --tails=50
+        run: docker compose logs --tail=50
