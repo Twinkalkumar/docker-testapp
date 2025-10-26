@@ -1,0 +1,40 @@
+name: Docker Build and Compose Run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+      steps:
+      # Step 1: checkout repository
+      - name: checkout repository
+        uses: actions/checkout@v3
+      
+      # Stage 1: Build Docker Image
+      - name: Setup Docker Build
+        uses: Docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: |
+          Docker build -t node-app:latest .
+      
+
+      # Stage 2: Run Container using Docker Compose
+
+      - name: Run Container with Docker Compose
+        run:  |
+          # Stop/remove any existing container first
+          docker Compose down || true
+
+          # Build and start containers
+          docker Compose -f docker-compose.yml up --build -d
+
+      # Show running containers
+      - name: List running containers
+        run:  docker compose ps
+
+      # Tail logs
+
+      -name: Show logs
+       run: docker compose logs --tails=50
